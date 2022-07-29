@@ -35,6 +35,8 @@
 
 ii. What is a good quality score cutoff for index reads and biological read pairs to utilize for sample identification and downstream analysis, respectively? Justify your answer.
 
+For the sample identification, it is necessary a higher Qscore cutoff, since we need our samples to be of higher quality in general. For that, I believe that a Q30 is a good quality score cutoff, with a base accuracy of >99.9%. The alignment process, that occurs later in the downstream analysis, can also filter for low-quality scores, so it is not necessary to have only high-quality reads. For that, I believe that a Q20 is a good cutoff, allowing a base accuracy of >99%.
+
 
 iii. How many indexes have undetermined (N) base calls? (Utilize your command line tool knowledge. Submit the command(s) you used. CHALLENGE: use a one-line command)
 
