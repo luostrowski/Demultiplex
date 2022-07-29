@@ -11,10 +11,28 @@
 | 1294_S1_L008_R4_001.fastq.gz | read2 | 101 | +33 |
 
 2. Per-base NT distribution
-    1. Use markdown to insert your 4 histograms here.
-    2. **YOUR ANSWER HERE**
-    3. **YOUR ANSWER HERE**
-    
+
+**Read1**
+
+![read1](https://user-images.githubusercontent.com/68506950/181681113-da9e4080-8ca0-433d-afa1-50ca72168ce2.png)
+
+
+**Read2**
+
+
+![read2](https://user-images.githubusercontent.com/68506950/181684308-0da662aa-87e5-4d8a-81b1-8507496e68dd.png)
+
+
+**Index1**
+
+![index1](https://user-images.githubusercontent.com/68506950/181684363-65044444-288e-4e20-bea3-eda998e39aab.png)
+
+
+**Index2**
+
+![index2](https://user-images.githubusercontent.com/68506950/181684382-56fab833-6185-4d46-b3ba-85799b108e86.png)
+
+
 ## Part 2
 1. Define the problem
 2. Describe output
