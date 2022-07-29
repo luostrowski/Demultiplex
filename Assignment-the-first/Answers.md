@@ -10,7 +10,7 @@
 | 1294_S1_L008_R3_001.fastq.gz | index2 | 8 | +33 |
 | 1294_S1_L008_R4_001.fastq.gz | read2 | 101 | +33 |
 
-2. Per-base NT distribution
+2. i.Per-base NT distribution
 
 **Read1**
 
@@ -31,6 +31,12 @@
 **Index2**
 
 ![index2](https://user-images.githubusercontent.com/68506950/181684382-56fab833-6185-4d46-b3ba-85799b108e86.png)
+
+
+ii. What is a good quality score cutoff for index reads and biological read pairs to utilize for sample identification and downstream analysis, respectively? Justify your answer.
+
+
+iii. How many indexes have undetermined (N) base calls? (Utilize your command line tool knowledge. Submit the command(s) you used. CHALLENGE: use a one-line command)
 
 
 ## Part 2
