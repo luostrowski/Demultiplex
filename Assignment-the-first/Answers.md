@@ -51,7 +51,13 @@ zcat 1294_S1_L008_R3_001.fastq.gz | awk '(NR%4==2)' | grep -c "N"
 
 ## Part 2
 1. Define the problem
+
+Multiplexing is a strategy for sequencing different samples together. For the demultiplexing, we will use the barcode (indexes) information in order to know which sequences came from each sample. For that, we have a list of indexes, a file with the reads, and another one with the indexes for each read. For each of the records, it is necessary to see if they match with the indexes, if they are index-hopped or if they are unknown and save them in the appropriate output file.
+
 2. Describe output
+
+Because of the large number of output files expected, a table would be a good way to organize all of them.
+
 3. Upload your [4 input FASTQ files](../TEST-input_FASTQ) and your [>=6 expected output FASTQ files](../TEST-output_FASTQ).
 4. Pseudocode
 5. High level functions. For each function, be sure to include:
@@ -59,3 +65,29 @@ zcat 1294_S1_L008_R3_001.fastq.gz | awk '(NR%4==2)' | grep -c "N"
     2. Function headers (name and parameters)
     3. Test examples for individual functions
     4. Return statement
+
+- Reverse complement function:
+```
+def rev_comp(seq:str) -> str:
+    ''' This function takes a sequence and returns the reverse complement.'''   
+    pass
+    return rc_seq
+```
+Test example:
+```
+Input: ATGCTA
+Expected output: TAGCAT
+````
+
+- Phred score average:
+```
+def phred_score(letter:str) -> int:
+    '''This funcion takes the quality score line in each record and returns the average'''
+    pass
+    return avg_phred
+```
+Test example:
+```
+Input: AAFFFJJJJJJJ
+Expected output: 38
+```
