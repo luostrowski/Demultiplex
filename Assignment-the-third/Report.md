@@ -20,4 +20,4 @@ Some additional information:
 
 In these samples, we had 4908655 reads with quality scores below cutoff. 
 
-The index-pairs counts for the matched and hopped files are in the [indexes counts](https://github.com/luostrowski/Demultiplex/blob/0eae88a8cedd26bef47b2342a43ddd741f6a890a/Assignment-the-third/indexes_counts.tsv).
+The index-pairs counts for the matched and hopped files are [here](https://github.com/luostrowski/Demultiplex/blob/0eae88a8cedd26bef47b2342a43ddd741f6a890a/Assignment-the-third/indexes_counts.tsv).
