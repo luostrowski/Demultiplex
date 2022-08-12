@@ -1,0 +1,117 @@
+ ################################
+    LAB NOTEBOOK DEMULTIPLEXING
+ ################################
+
+
+ #########################
+   ASSIGNMENT THE FIRST
+ #########################
+ -------------
+| 26 July 2022 |
+ -------------
+
+Some considerations: 
+
+DEMULTIPLEXING: separating samples that were sequenced together.
+Dual matched: barcode equal at the beginning and the end of the sequence. 
+N = unknown nucleotide
+
+ Bash commands:
+ - Figuring out the read length (don't forget to subtract the new line character):
+ zcat 1294_S1_L008_R1_001.fastq.gz | head -2 | tail -1 | wc
+ zcat 1294_S1_L008_R1_002.fastq.gz | head -2 | tail -1 | wc
+ zcat 1294_S1_L008_R1_003.fastq.gz | head -2 | tail -1 | wc
+ zcat 1294_S1_L008_R1_004.fastq.gz | head -2 | tail -1 | wc
+
+ - Phred encoding:
+zcat 1294_S1_L008_R1_001.fastq.gz | head -4 | tail -1
+
+# and < characters are Phred +33 encoding.
+
+Look at the first five lines in the two reads files and what do you see?
+- lines in the different files have the same header = same cluster
+
+Indexes don't matches, but maybe the reverse complement??
+
+We should try grep?
+
+Command to use the same interactive session: ssh n + node number
+
+Don't run all the files together in the Talapas, it is easy to separate them into different jobs.
+
+ -------------
+| 27 July 2022 |
+ -------------
+
+How to get an interactive mode on Talapas? 
+
+srun --account=bgmp --partition=bgmp --nodes=1 --ntasks-per-node=1 --time=2:00:00 --cpus-per-task=1 --pty bash
+
+ -------------
+| 28 July 2022 |
+ -------------
+- For pseudo code: only do quality check to the read-pairs that match. 
+
+ #########################
+   ASSIGNMENT THE SECOND
+ #########################
+ ---------------
+| 2 August 2022 |
+ ---------------
+
+- It might be a good idea to save the indexes and rev complement in a set. You decided to use a dictionary later.
+- Save each line of the record into a variable? Or a list? 
+
+#########################
+   ASSIGNMENT THE THIRD
+#########################
+ ---------------
+| 5 August 2022 |
+ ---------------
+
+- Include a counter for each index pair in matched and hopped reads. Save as an output tsk file.
+
+- Opening zipped files: 
+
+---> gzip.open(file, "rt") <---
+
+- How to zip all files using pegz?
+
+	- Start an interactive node as follows (yes, 20 cpus!):
+
+srun --account=bgmp --partition=bgmp --nodes=1 --ntasks-per-node=1 --time=1:00:00 --cpus-per-task=20 --pty bash
+
+	- Run this in the folder with all the files:
+pigz * &  
+	
+	- Check with "ls -lah" to see the progress.
+
+ ---------------
+| 11 August 2022 |
+ ---------------
+Results from /usr/bin/time -v :
+
+Command being timed: "./demultiplex.py -f1 /../../../projects/bgmp/shared/2017_sequencing/1294_S1_L008_R1_001.fastq.gz -f2 /../../../projects/bgmp/shared/2017_sequencing/1294_S1_L008_R4_001.fastq.gz -i1 /../../../projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz -i2 /../../../projects/bgmp/shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz -ind /../../../projects/bgmp/shared/2017_sequencing/indexes.txt -c 30"
+	User time (seconds): 9053.28
+	System time (seconds): 27.59
+	Percent of CPU this job got: 90%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:46:59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 240296
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 132645
+	Voluntary context switches: 48888
+	Involuntary context switches: 12620
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
